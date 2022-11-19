@@ -27,38 +27,44 @@ class NothingLEDView: ConstraintLayout {
     }
 
     private fun translateBrightnessToAlpha(brightness: Int): Float {
-        (brightness / 4096f).let {
+        (brightness / 4095f).let {
             return if (it < 0.1f) 0.1f else it
         }
     }
 
-    var cameraBrightness = 4096
+    var cameraBrightness = 4095
         set(value) {
             field = value
             binding.imgDeviceLedCamera.alpha = translateBrightnessToAlpha(value)
         }
 
-    var slantBrightness = 4096
+    var slantBrightness = 4095
         set(value) {
             field = value
             binding.imgDeviceLedVline.alpha = translateBrightnessToAlpha(value)
         }
 
-    var centerBrightness = 4096
+    var centerBrightness = 4095
         set(value) {
             field = value
             binding.imgDeviceLedCenter.alpha = translateBrightnessToAlpha(value)
         }
 
-    var bottomStripBrightness = 4096
+    var bottomStripBrightness = 4095
         set(value) {
             field = value
             binding.imgDeviceLedBottom.alpha = translateBrightnessToAlpha(value)
         }
 
-    var bottomDotBrightness = 4096
+    var bottomDotBrightness = 4095
         set(value) {
             field = value
             binding.imgDeviceLedBottomDot.alpha = translateBrightnessToAlpha(value)
         }
+
+    fun setOnCameraSectionClickListener(listener: OnClickListener) = binding.viewTouchLedCamera.setOnClickListener(listener)
+    fun setOnVLineSectionClickListener(listener: OnClickListener) = binding.viewTouchLedVline.setOnClickListener(listener)
+    fun setOnCenterSectionClickListener(listener: OnClickListener) = binding.viewTouchLedCenter.setOnClickListener(listener)
+    fun setOnBottomStripSectionClickListener(listener: OnClickListener) = binding.viewTouchLedBottom.setOnClickListener(listener)
+    fun setOnBottomDotSectionClickListener(listener: OnClickListener) = binding.viewTouchLedBottomDot.setOnClickListener(listener)
 }
