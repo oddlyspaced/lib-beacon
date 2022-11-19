@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".RootActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <com.oddlyspaced.nothing.beacon.lib.ui.NothingLEDView
+        android:id="@+id/nothing_device"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Root Access Present!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
