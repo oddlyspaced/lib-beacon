@@ -1,4 +1,4 @@
-package com.oddlyspaced.nothing.beacon
+package com.oddlyspaced.nothing.beacon.lib.ui
 
 import android.content.Context
 import android.util.AttributeSet
