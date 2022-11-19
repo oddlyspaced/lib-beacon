@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="main_0">@android:color/system_accent1_0</color>
+    <color name="main_10">@android:color/system_accent1_10</color>
+    <color name="main_50">@android:color/system_accent1_50</color>
+    <color name="main_100">@android:color/system_accent1_100</color>
+    <color name="main_200">@android:color/system_accent1_200</color>
+    <color name="main_300">@android:color/system_accent1_300</color>
+    <color name="main_400">@android:color/system_accent1_400</color>
+    <color name="main_500">@android:color/system_accent1_500</color>
+    <color name="main_600">@android:color/system_accent1_600</color>
+    <color name="main_700">@android:color/system_accent1_700</color>
+    <color name="main_800">@android:color/system_accent1_800</color>
+    <color name="main_900">@android:color/system_accent1_900</color>
+    <color name="main_1000">@android:color/system_accent1_1000</color>
+
+    <color name="white">@color/main_0</color>
+    <color name="background">@color/main_1000</color>
 </resources>
