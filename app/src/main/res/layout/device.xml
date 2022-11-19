@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_device_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <ImageView
+        android:id="@+id/img_device_led_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+        app:layout_constraintStart_toStartOf="@+id/img_device_background"
+        app:layout_constraintTop_toTopOf="@+id/img_device_background"
+        app:srcCompat="@drawable/led_strip_camera" />
+
+    <ImageView
+        android:id="@+id/img_device_led_vline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+        app:layout_constraintStart_toStartOf="@+id/img_device_background"
+        app:layout_constraintTop_toTopOf="@+id/img_device_background"
+        app:srcCompat="@drawable/led_strip_vline" />
+
+    <ImageView
+        android:id="@+id/img_device_led_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+        app:layout_constraintStart_toStartOf="@+id/img_device_background"
+        app:layout_constraintTop_toTopOf="@+id/img_device_background"
+        app:srcCompat="@drawable/led_strip_center" />
+
+    <ImageView
+        android:id="@+id/img_device_led_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+        app:layout_constraintStart_toStartOf="@+id/img_device_background"
+        app:layout_constraintTop_toTopOf="@+id/img_device_background"
+        app:srcCompat="@drawable/led_strip_bottom" />
+
+    <ImageView
+        android:id="@+id/img_device_led_bottom_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+        app:layout_constraintStart_toStartOf="@+id/img_device_background"
+        app:layout_constraintTop_toTopOf="@+id/img_device_background"
+        app:srcCompat="@drawable/led_dot_bottom" />
+</androidx.constraintlayout.widget.ConstraintLayout>
