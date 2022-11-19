@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.oddlyspaced.nothing.beacon.databinding.DeviceBinding
+import com.oddlyspaced.nothing.beacon.lib.databinding.DeviceBinding
 
 class NothingLEDView: ConstraintLayout {
 
