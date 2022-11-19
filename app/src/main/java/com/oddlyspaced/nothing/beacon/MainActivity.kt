@@ -1,29 +1,43 @@
 package com.oddlyspaced.nothing.beacon
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.viewbinding.BuildConfig
-import com.topjohnwu.superuser.Shell
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.oddlyspaced.nothing.beacon.ui.theme.SampeComposeTheme
 
-class MainActivity : AppCompatActivity() {
-
-    init {
-        Shell.enableVerboseLogging = BuildConfig.DEBUG
-        Shell.setDefaultBuilder(
-            Shell.Builder.create().apply {
-                setFlags(Shell.FLAG_REDIRECT_STDERR)
-                setTimeout(10)
-            }
-        )
-    }
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        Shell.getShell {
-            startActivity(Intent(this, RootActivity::class.java))
+        setContent {
+            SampeComposeTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    Greeting("Android")
+                }
+            }
         }
+    }
+}
+
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!")
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    SampeComposeTheme {
+        Greeting("Android")
     }
 }

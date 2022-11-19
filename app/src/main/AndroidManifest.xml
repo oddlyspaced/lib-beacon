@@ -9,15 +9,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Beacon"
-        tools:targetApi="31">
-        <activity
-            android:name=".RootActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+        android:theme="@style/Theme.Beacon">
         <activity
             android:name=".MainActivity"
             android:exported="true">
