@@ -1,31 +1,28 @@
 package com.oddlyspaced.nothing.beacon
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BrightnessHigh
-import androidx.compose.material.icons.filled.BrightnessLow
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.MutableLiveData
 import com.oddlyspaced.nothing.beacon.lib.RootLedControllerImpl
-import com.oddlyspaced.nothing.beacon.lib.constant.LedConstant
 import com.oddlyspaced.nothing.beacon.lib.constant.Section
-import com.oddlyspaced.nothing.beacon.ui.theme.*
+import com.oddlyspaced.nothing.beacon.ui.Phone1
+import com.oddlyspaced.nothing.beacon.ui.SectionToggle
+import com.oddlyspaced.nothing.beacon.ui.theme.BeaconComposeTheme
+import com.oddlyspaced.nothing.beacon.ui.theme.Main100
+import com.smarttoolfactory.slider.ColorfulSlider
 
 class MainActivity : ComponentActivity() {
 
@@ -52,112 +49,6 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GlyphToggle() {
-        val switchState = remember {
-            mutableStateOf(true)
-        }
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 28.dp),
-            backgroundColor = if (switchState.value) Main50 else Main10,
-            shape = RoundedCornerShape(24.dp)
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text("Glyph Lights", color = Main1000, fontSize = 20.sp)
-                Switch(
-                    checked = switchState.value, onCheckedChange = {
-                        switchState.value = it
-                    }, colors = SwitchDefaults.colors(
-                        checkedThumbColor = Main1000,
-                        uncheckedThumbColor = Main1000,
-                        checkedTrackColor = Main200,
-                        uncheckedTrackColor = Main800,
-                    )
-                )
-            }
-        }
-    }
-
-    private fun translateBrightnessToAlpha(brightness: Int): Float {
-        (brightness / 4095f).let {
-            return if (it < 0.1f) 0.1f else it
-        }
-    }
-
-    @Composable
-    fun PhoneLayout(
-        cameraBrightness: Int,
-        vlineBrightness: Int,
-        centerBrightness: Int,
-        bottomStripBrightness: Int,
-        bottomDotBrightness: Int
-    ) {
-        Log.d("OMG", cameraBrightness.toString())
-        Box(contentAlignment = Alignment.Center, modifier = Modifier.padding(top = 24.dp)) {
-            Image(
-                painter = painterResource(id = com.oddlyspaced.nothing.beacon.lib.R.drawable.back),
-                contentDescription = "",
-            )
-            Image(
-                painter = painterResource(id = com.oddlyspaced.nothing.beacon.lib.R.drawable.led_strip_camera),
-                contentDescription = "",
-                alpha = translateBrightnessToAlpha(cameraBrightness)
-            )
-            Image(
-                painter = painterResource(id = com.oddlyspaced.nothing.beacon.lib.R.drawable.led_strip_vline),
-                contentDescription = "",
-                alpha = translateBrightnessToAlpha(vlineBrightness)
-            )
-            Image(
-                painter = painterResource(id = com.oddlyspaced.nothing.beacon.lib.R.drawable.led_strip_center),
-                contentDescription = "",
-                alpha = translateBrightnessToAlpha(centerBrightness)
-            )
-            Image(
-                painter = painterResource(id = com.oddlyspaced.nothing.beacon.lib.R.drawable.led_strip_bottom),
-                contentDescription = "",
-                alpha = translateBrightnessToAlpha(bottomStripBrightness)
-            )
-            Image(
-                painter = painterResource(id = com.oddlyspaced.nothing.beacon.lib.R.drawable.led_dot_bottom),
-                contentDescription = "",
-                alpha = translateBrightnessToAlpha(bottomDotBrightness)
-            )
-        }
-    }
-
-    @Composable
-    fun BrightnessSlider(modifier: Modifier, onBrightnessUpdate: (Int) -> Unit) {
-        var sliderPosition by remember { mutableStateOf(0f) }
-        Row(
-            modifier,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(Icons.Filled.BrightnessLow, contentDescription = null)
-            Slider(
-                value = sliderPosition,
-                onValueChange = {
-                    sliderPosition = it
-                    onBrightnessUpdate((sliderPosition * LedConstant.BRIGHTNESS_MAX).toInt())
-                },
-                modifier = Modifier.fillMaxWidth(0.8f),
-                onValueChangeFinished = {
-                    ledController.setSectionBrightness(Section.ALL_WHITE_LEDS, 0)
-                }
-            )
-            Icon(Icons.Filled.BrightnessHigh, contentDescription = null)
-        }
-    }
-
-    @Composable
     fun Content() {
         var brightness by remember {
             mutableStateOf(0)
@@ -165,9 +56,15 @@ class MainActivity : ComponentActivity() {
         Column {
             Column(modifier = Modifier.padding(top = 80.dp, start = 16.dp, end = 16.dp)) {
                 Heading()
-                GlyphToggle()
+                SectionToggle(
+                    modifier = Modifier.padding(top = 24.dp),
+                    text = "Glyph Lights",
+                    defaultSwitchState = true
+                )
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 24.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
@@ -176,7 +73,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxWidth(0.5f),
                         color = Color.Transparent,
                     ) {
-                        PhoneLayout(
+                        Phone1(
                             brightness,
                             brightness,
                             brightness,
@@ -185,15 +82,28 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 }
-                BrightnessSlider(
+                Text(
+                    text = "Brightness",
+                    color = Main100,
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+                ColorfulSlider(
                     modifier = Modifier
-                        .padding(top = 16.dp)
-                        .fillMaxWidth(),
-                ) { br ->
-                    ledController.setSectionBrightness(Section.ALL_WHITE_LEDS, br)
-                    brightness = br
-                }
-
+                        .fillMaxWidth(1f)
+                        .padding(top = 4.dp),
+                    value = brightness.toFloat(),
+                    valueRange = 0f..4096f,
+                    onValueChange = { value ->
+                        brightness = value.toInt()
+                    },
+                    onValueChangeFinished = {
+                        ledController.setSectionBrightness(Section.ALL_WHITE_LEDS, 0)
+                    },
+                    trackHeight = 24.dp,
+                    thumbRadius = 0.dp,
+                    steps = 1
+                )
             }
         }
     }
