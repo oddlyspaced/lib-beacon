@@ -22,5 +22,9 @@ enum class Led(val code: Int) {
     // Battery Dot
     LED_BATTERY_DOT(16),
     // Red Recording Indicator
-    LED_RECORDING_INDICATOR(17)
+    LED_RECORDING_INDICATOR(17);
+
+    companion object  {
+        fun fromCode(value: Int) = values().first { it.code == value }
+    }
 }
