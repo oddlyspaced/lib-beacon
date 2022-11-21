@@ -1,10 +1,14 @@
 package com.oddlyspaced.nothing.beacon.lib
 
 import android.animation.ValueAnimator
+import android.content.Context
+import android.media.MediaPlayer
+import android.util.Log
 import com.oddlyspaced.nothing.beacon.lib.constant.Led
 import com.oddlyspaced.nothing.beacon.lib.constant.LedConstant
 import com.oddlyspaced.nothing.beacon.lib.constant.Section
 import com.oddlyspaced.nothing.beacon.lib.interfaces.LedController
+import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -44,6 +48,32 @@ class LedAnimator(private val controller: LedController) {
                     continue
                 controller.setLedBrightness(Led.fromCode(leds[i]), 0)
                 delay(16)
+            }
+        }
+    }
+
+    // TODO: cache anim data in memory
+    fun resourceAnimation(context: Context, animData: Int, mediaRes: Int) {
+        // create media player object for our ringtone file
+        val mediaPlayer = MediaPlayer.create(context, mediaRes)
+        // load animation csv data for it
+        val ledAnimationData = arrayListOf<Array<String>>()
+        context.resources.openRawResource(animData).bufferedReader().readLines().forEach {
+            ledAnimationData.add(it.split(",").toTypedArray())
+        }
+        // start media player
+        mediaPlayer.start()
+        CoroutineScope(Dispatchers.IO).launch {
+            while (mediaPlayer.currentPosition == mediaPlayer.duration - 1) {
+                // spread data across duration
+                val durLoc = mediaPlayer.currentPosition.toDouble() / mediaPlayer.duration
+                val pos = (durLoc * ledAnimationData.size).toInt()
+                val data = ledAnimationData[pos]
+                controller.setLedBrightness(Led.fromCode(7), data[0].toInt())
+                controller.setLedBrightness(Led.fromCode(1), data[1].toInt())
+                controller.setSectionBrightness(Section.CENTER_RING, data[2].toInt())
+                controller.setSectionBrightness(Section.SLANT, data[3].toInt())
+                controller.setLedBrightness(Led.fromCode(16), data[4].toInt())
             }
         }
     }
