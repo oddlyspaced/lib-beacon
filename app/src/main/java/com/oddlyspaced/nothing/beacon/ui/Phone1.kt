@@ -1,10 +1,8 @@
 package com.oddlyspaced.nothing.beacon.ui
 
-import android.provider.ContactsContract.CommonDataKinds.Phone
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import com.oddlyspaced.nothing.beacon.lib.R
@@ -24,7 +22,7 @@ fun Phone1(
     bottomStripBrightness: Int,
     bottomDotBrightness: Int
 ) {
-    Box(contentAlignment = Alignment.Center, modifier = modifier) {
+    Box(modifier = modifier) {
         Image(
             painter = painterResource(id = R.drawable.back),
             contentDescription = "",
