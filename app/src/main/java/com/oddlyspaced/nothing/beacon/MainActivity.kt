@@ -4,9 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.BrightnessHigh
+import androidx.compose.material.icons.filled.BrightnessLow
+import androidx.compose.material.icons.outlined.BrightnessHigh
+import androidx.compose.material.icons.outlined.BrightnessLow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,11 +19,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oddlyspaced.nothing.beacon.lib.RootLedControllerImpl
 import com.oddlyspaced.nothing.beacon.lib.constant.Section
+import com.oddlyspaced.nothing.beacon.ui.BatteryMenuScreen
 import com.oddlyspaced.nothing.beacon.ui.Phone1
+import com.oddlyspaced.nothing.beacon.ui.SectionHeading
 import com.oddlyspaced.nothing.beacon.ui.SectionToggle
 import com.oddlyspaced.nothing.beacon.ui.theme.BeaconComposeTheme
 import com.oddlyspaced.nothing.beacon.ui.theme.Main100
@@ -44,8 +53,11 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun Heading() {
-        Text(text = "Glyph Interface", fontSize = 44.sp, fontWeight = FontWeight.Medium)
+    fun SectionTitle(modifier: Modifier, title: String, subtitle: String) {
+        Column(modifier = modifier.fillMaxWidth()) {
+            Text(title, fontSize = 18.sp, fontWeight = FontWeight.Medium)
+            Text(subtitle, fontSize = 14.sp)
+        }
     }
 
     @Composable
@@ -53,9 +65,12 @@ class MainActivity : ComponentActivity() {
         var brightness by remember {
             mutableStateOf(0)
         }
-        Column {
-            Column(modifier = Modifier.padding(top = 80.dp, start = 16.dp, end = 16.dp)) {
-                Heading()
+        Column(Modifier.verticalScroll(rememberScrollState())) {
+            Column(
+                modifier = Modifier
+                    .padding(top = 80.dp, start = 16.dp, end = 16.dp, bottom = 32.dp)
+            ) {
+                SectionHeading("Beacon")
                 SectionToggle(
                     modifier = Modifier.padding(top = 24.dp),
                     text = "Glyph Lights",
@@ -82,28 +97,38 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(Icons.Filled.BrightnessLow, contentDescription = null)
+                    Box(modifier = Modifier.fillMaxWidth(0.8f)) {
+                        Slider(
+                            modifier = Modifier
+                                .fillMaxWidth(1f)
+                                .padding(top = 4.dp),
+                            value = brightness.toFloat(),
+                            valueRange = 0f..4096f,
+                            onValueChange = { value ->
+                                brightness = value.toInt()
+                            },
+                            onValueChangeFinished = {
+                                ledController.setSectionBrightness(Section.ALL_WHITE_LEDS, 0)
+                            },
+                        )
+                    }
+                    Icon(Icons.Filled.BrightnessHigh, contentDescription = null)
+                }
+                SectionTitle(Modifier.padding(top = 16.dp), "Ringtones", "scribble")
+                SectionTitle(Modifier.padding(top = 16.dp), "Notification sounds", "guiro")
                 Text(
-                    text = "Brightness",
-                    color = Main100,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(top = 16.dp)
+                    "Feedback",
+                    modifier = Modifier.padding(top = 32.dp),
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
                 )
-                ColorfulSlider(
-                    modifier = Modifier
-                        .fillMaxWidth(1f)
-                        .padding(top = 4.dp),
-                    value = brightness.toFloat(),
-                    valueRange = 0f..4096f,
-                    onValueChange = { value ->
-                        brightness = value.toInt()
-                    },
-                    onValueChangeFinished = {
-                        ledController.setSectionBrightness(Section.ALL_WHITE_LEDS, 0)
-                    },
-                    trackHeight = 24.dp,
-                    thumbRadius = 0.dp,
-                    steps = 1
-                )
+                SectionTitle(Modifier.padding(top = 16.dp), "Charging meter", "On")
             }
         }
     }
