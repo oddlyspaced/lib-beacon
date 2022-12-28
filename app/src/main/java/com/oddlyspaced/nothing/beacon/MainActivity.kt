@@ -10,8 +10,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BrightnessHigh
 import androidx.compose.material.icons.filled.BrightnessLow
-import androidx.compose.material.icons.outlined.BrightnessHigh
-import androidx.compose.material.icons.outlined.BrightnessLow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,19 +17,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oddlyspaced.nothing.beacon.lib.RootLedControllerImpl
 import com.oddlyspaced.nothing.beacon.lib.constant.Section
-import com.oddlyspaced.nothing.beacon.ui.BatteryMenuScreen
 import com.oddlyspaced.nothing.beacon.ui.Phone1
 import com.oddlyspaced.nothing.beacon.ui.SectionHeading
 import com.oddlyspaced.nothing.beacon.ui.SectionToggle
 import com.oddlyspaced.nothing.beacon.ui.theme.BeaconComposeTheme
-import com.oddlyspaced.nothing.beacon.ui.theme.Main100
-import com.smarttoolfactory.slider.ColorfulSlider
 
 class MainActivity : ComponentActivity() {
 
@@ -41,7 +34,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BeaconComposeTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -70,7 +62,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .padding(top = 80.dp, start = 16.dp, end = 16.dp, bottom = 32.dp)
             ) {
-                SectionHeading("Beacon")
+                SectionHeading(text = "Glyph Interface")
                 SectionToggle(
                     modifier = Modifier.padding(top = 24.dp),
                     text = "Glyph Lights",
@@ -109,9 +101,10 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxWidth(1f)
                                 .padding(top = 4.dp),
                             value = brightness.toFloat(),
-                            valueRange = 0f..4096f,
+                            valueRange = 0f..4095f,
                             onValueChange = { value ->
                                 brightness = value.toInt()
+                                ledController.setSectionBrightness(Section.ALL_WHITE_LEDS, brightness)
                             },
                             onValueChangeFinished = {
                                 ledController.setSectionBrightness(Section.ALL_WHITE_LEDS, 0)
@@ -122,13 +115,13 @@ class MainActivity : ComponentActivity() {
                 }
                 SectionTitle(Modifier.padding(top = 16.dp), "Ringtones", "scribble")
                 SectionTitle(Modifier.padding(top = 16.dp), "Notification sounds", "guiro")
-                Text(
-                    "Feedback",
-                    modifier = Modifier.padding(top = 32.dp),
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 14.sp,
-                )
-                SectionTitle(Modifier.padding(top = 16.dp), "Charging meter", "On")
+//                Text(
+//                    "Feedback",
+//                    modifier = Modifier.padding(top = 32.dp),
+//                    fontWeight = FontWeight.SemiBold,
+//                    fontSize = 14.sp,
+//                )
+//                SectionTitle(Modifier.padding(top = 16.dp), "Charging meter", "On")
             }
         }
     }
