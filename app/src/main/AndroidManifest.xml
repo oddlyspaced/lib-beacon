@@ -26,7 +26,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <receiver android:name=".receiver.PhoneStateReceiver"
+        <receiver android:name=".receiver.PhoneCallReceiverImpl"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
