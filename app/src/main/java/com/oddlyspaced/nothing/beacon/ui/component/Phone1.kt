@@ -1,4 +1,4 @@
-package com.oddlyspaced.nothing.beacon.ui
+package com.oddlyspaced.nothing.beacon.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

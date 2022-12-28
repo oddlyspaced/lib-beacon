@@ -1,4 +1,4 @@
-package com.oddlyspaced.nothing.beacon.ui
+package com.oddlyspaced.nothing.beacon.navigation
 
 sealed class Screens(val route: String) {
     object Main: Screens("main")
