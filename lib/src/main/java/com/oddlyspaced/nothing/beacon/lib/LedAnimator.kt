@@ -64,7 +64,7 @@ class LedAnimator(private val controller: LedController) {
         // start media player
         mediaPlayer.start()
         CoroutineScope(Dispatchers.IO).launch {
-            while (mediaPlayer.currentPosition == mediaPlayer.duration - 1) {
+            while (mediaPlayer.currentPosition != mediaPlayer.duration - 1) {
                 // spread data across duration
                 val durLoc = mediaPlayer.currentPosition.toDouble() / mediaPlayer.duration
                 val pos = (durLoc * ledAnimationData.size).toInt()
