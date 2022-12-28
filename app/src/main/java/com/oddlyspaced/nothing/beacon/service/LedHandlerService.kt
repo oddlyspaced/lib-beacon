@@ -3,10 +3,13 @@ package com.oddlyspaced.nothing.beacon.service
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.IBinder
 import android.os.Message
+import androidx.compose.foundation.checkScrollableContainerConstraints
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.oddlyspaced.nothing.beacon.util.Logger
@@ -24,6 +27,26 @@ class LedHandlerService: Service() {
         fun stop(context: Context) {
             context.stopService(Intent(context, LedHandlerService::class.java))
         }
+    }
+
+    var state = 112
+    private val customReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+           Logger.d("Testing Receiver: $state !!!")
+            state = 12345
+        }
+    }
+
+    override fun onCreate() {
+        val filter = IntentFilter().apply {
+            addAction("com.oddly.led")
+        }
+        Logger.d("REGISTERING")
+        registerReceiver(customReceiver, filter);
+    }
+
+    override fun onDestroy() {
+        unregisterReceiver(customReceiver)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -47,6 +70,7 @@ class LedHandlerService: Service() {
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-        TODO("Not yet implemented")
+        // todo: explore use case later
+        return null
     }
 }
