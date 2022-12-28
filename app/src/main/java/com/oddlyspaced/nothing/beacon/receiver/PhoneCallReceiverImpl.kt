@@ -23,7 +23,7 @@ import java.util.*
 //    }
 //}
 
-class PhoneStateReceiver: PhoneCallReceiver() {
+class PhoneCallReceiverImpl: PhoneCallReceiver() {
     override fun onCustomCallStateChanged(context: Context?, state: Int, number: String?) {
         Logger.d("onCustomCallStateChanges: Phone Number: $number $state")
         super.onCustomCallStateChanged(context, state, number)
@@ -42,16 +42,6 @@ class PhoneStateReceiver: PhoneCallReceiver() {
     override fun onMissedCall(ctx: Context?, number: String?, start: Date?) {
         Logger.d("onMissedCall")
         super.onMissedCall(ctx, number, start)
-    }
-
-    override fun onOutgoingCallEnded(ctx: Context?, number: String?, start: Date?, end: Date?) {
-        Logger.d("onOutgoingCallEnded")
-        super.onOutgoingCallEnded(ctx, number, start, end)
-    }
-
-    override fun onOutgoingCallStarted(ctx: Context?, number: String?, start: Date?) {
-        Logger.d("onOutgoingCallStarted")
-        super.onOutgoingCallStarted(ctx, number, start)
     }
 
 }
