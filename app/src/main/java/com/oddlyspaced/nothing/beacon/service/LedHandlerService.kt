@@ -8,8 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.IBinder
-import android.os.Message
-import androidx.compose.foundation.checkScrollableContainerConstraints
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.oddlyspaced.nothing.beacon.lib.animation.RingtoneAnimator
