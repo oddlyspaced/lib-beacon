@@ -19,12 +19,18 @@ class PhoneCallReceiverImpl: PhoneCallReceiver() {
 
     override fun onIncomingCallStarted(ctx: Context?, number: String?, start: Date?) {
         Logger.d("onIncomingStarted")
+        sendBroadcast(ctx!!, "started")
         super.onIncomingCallStarted(ctx, number, start)
     }
 
     override fun onMissedCall(ctx: Context?, number: String?, start: Date?) {
         Logger.d("onMissedCall")
+        sendBroadcast(ctx!!, "missed")
         super.onMissedCall(ctx, number, start)
+    }
+
+    private fun sendBroadcast(context: Context, event: String) {
+        context.sendBroadcast(Intent("com.oddly.led.$event"))
     }
 
 }

@@ -12,6 +12,7 @@ import android.os.Message
 import androidx.compose.foundation.checkScrollableContainerConstraints
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import com.oddlyspaced.nothing.beacon.lib.animation.RingtoneAnimator
 import com.oddlyspaced.nothing.beacon.util.Logger
 
 // foreground service that will manage state for LED ringtones and calls
@@ -29,20 +30,27 @@ class LedHandlerService: Service() {
         }
     }
 
-    var state = 112
+    private lateinit var anim: RingtoneAnimator
+
     private val customReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-           Logger.d("Testing Receiver: $state !!!")
-            state = 12345
+            val action = intent!!.action
+            when (action) {
+                "com.oddly.led.started" -> anim.play()
+                "com.oddly.led.missed" -> anim.stop()
+            }
+           Logger.d("Testing Receiver: !!!")
         }
     }
 
     override fun onCreate() {
         val filter = IntentFilter().apply {
-            addAction("com.oddly.led")
+            addAction("com.oddly.led.started")
+            addAction("com.oddly.led.missed")
         }
         Logger.d("REGISTERING")
         registerReceiver(customReceiver, filter);
+        anim = RingtoneAnimator(this)
     }
 
     override fun onDestroy() {
