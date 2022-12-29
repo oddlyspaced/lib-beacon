@@ -17,7 +17,10 @@ import com.oddlyspaced.nothing.beacon.util.Logger
 class LedHandlerService: Service() {
 
     companion object {
-        private const val CHANNEL_ID = "12345"
+        private const val CHANNEL_ID = "LED_CHANNEL"
+        private const val ACTION_PREFIX = "beacon.call"
+        const val ACTION_CALL_STARTED = "$ACTION_PREFIX.started"
+        const val ACTION_CALL_MISSED = "$ACTION_PREFIX.missed"
 
         fun start(context: Context) {
             ContextCompat.startForegroundService(context, Intent(context, LedHandlerService::class.java))
@@ -32,21 +35,21 @@ class LedHandlerService: Service() {
 
     private val customReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            val action = intent!!.action
-            when (action) {
-                "com.oddly.led.started" -> anim.play()
-                "com.oddly.led.missed" -> anim.stop()
+            intent?.action?.let { action ->
+                when (action) {
+                    ACTION_CALL_STARTED -> anim.play()
+                    ACTION_CALL_MISSED -> anim.stop()
+                }
             }
-           Logger.d("Testing Receiver: !!!")
         }
     }
 
     override fun onCreate() {
         val filter = IntentFilter().apply {
-            addAction("com.oddly.led.started")
-            addAction("com.oddly.led.missed")
+            addAction(ACTION_CALL_STARTED)
+            addAction(ACTION_CALL_MISSED)
         }
-        Logger.d("REGISTERING")
+        Logger.d("Registering LED Receiver")
         registerReceiver(customReceiver, filter);
         anim = RingtoneAnimator(this)
     }
