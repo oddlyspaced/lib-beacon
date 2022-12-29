@@ -45,4 +45,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_perm_notification" />
+
+    <Button
+        android:id="@+id/btn_ring_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="48dp"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_ring_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="48dp"
+        android:text="Stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_anim_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Prev"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ring_start"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ring_start"
+        app:layout_constraintStart_toStartOf="@+id/btn_ring_start" />
+
+    <Button
+        android:id="@+id/btn_anim_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Next"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ring_stop"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ring_stop"
+        app:layout_constraintStart_toStartOf="@+id/btn_ring_stop" />
+
+    <TextView
+        android:id="@+id/tx_current_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_anim_next"
+        app:layout_constraintEnd_toStartOf="@+id/btn_anim_next"
+        app:layout_constraintStart_toEndOf="@+id/btn_anim_prev"
+        app:layout_constraintTop_toTopOf="@+id/btn_anim_prev" />
 </androidx.constraintlayout.widget.ConstraintLayout>
