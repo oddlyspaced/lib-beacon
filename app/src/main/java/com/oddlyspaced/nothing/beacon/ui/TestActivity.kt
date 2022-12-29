@@ -1,4 +1,4 @@
-package com.oddlyspaced.nothing.beacon
+package com.oddlyspaced.nothing.beacon.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
