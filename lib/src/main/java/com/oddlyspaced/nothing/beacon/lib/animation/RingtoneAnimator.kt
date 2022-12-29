@@ -2,25 +2,23 @@ package com.oddlyspaced.nothing.beacon.lib.animation
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.util.Log
 import com.oddlyspaced.nothing.beacon.lib.R
 import com.oddlyspaced.nothing.beacon.lib.RootLedControllerImpl
 import com.oddlyspaced.nothing.beacon.lib.enum.Led
+import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
 import com.oddlyspaced.nothing.beacon.lib.enum.Section
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.logging.Logger
 
-class RingtoneAnimator(context: Context) {
+class RingtoneAnimator(context: Context, anim: NothingRingtone) {
 
     private val controller = RootLedControllerImpl()
-    private val mediaPlayer = MediaPlayer.create(context, R.raw.ringtone_radiate)
+    private val mediaPlayer = MediaPlayer.create(context, anim.media)
     private val ledAnimationData = arrayListOf<Array<String>>()
 
     init {
-        context.resources.openRawResource(R.raw.data_radiate).bufferedReader().readLines()
+        context.resources.openRawResource(anim.data).bufferedReader().readLines()
             .forEach {
                 ledAnimationData.add(it.split(",").toTypedArray())
             }
