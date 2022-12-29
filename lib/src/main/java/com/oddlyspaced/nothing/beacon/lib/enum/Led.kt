@@ -1,4 +1,4 @@
-package com.oddlyspaced.nothing.beacon.lib.constant
+package com.oddlyspaced.nothing.beacon.lib.enum
 
 enum class Led(val code: Int) {
     // Slant Strip

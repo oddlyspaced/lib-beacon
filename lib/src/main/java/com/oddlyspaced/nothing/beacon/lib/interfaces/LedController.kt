@@ -1,8 +1,8 @@
 package com.oddlyspaced.nothing.beacon.lib.interfaces
 
-import com.oddlyspaced.nothing.beacon.lib.constant.Led
-import com.oddlyspaced.nothing.beacon.lib.constant.LedConstant
-import com.oddlyspaced.nothing.beacon.lib.constant.Section
+import com.oddlyspaced.nothing.beacon.lib.enum.Led
+import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant
+import com.oddlyspaced.nothing.beacon.lib.enum.Section
 
 /**
  * Interface for controlling LEDs

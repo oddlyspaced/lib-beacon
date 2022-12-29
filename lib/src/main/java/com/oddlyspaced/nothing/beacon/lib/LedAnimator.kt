@@ -4,9 +4,9 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
-import com.oddlyspaced.nothing.beacon.lib.constant.Led
-import com.oddlyspaced.nothing.beacon.lib.constant.LedConstant
-import com.oddlyspaced.nothing.beacon.lib.constant.Section
+import com.oddlyspaced.nothing.beacon.lib.enum.Led
+import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant
+import com.oddlyspaced.nothing.beacon.lib.enum.Section
 import com.oddlyspaced.nothing.beacon.lib.interfaces.LedController
 import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.CoroutineScope

@@ -5,8 +5,8 @@ import android.media.MediaPlayer
 import android.util.Log
 import com.oddlyspaced.nothing.beacon.lib.R
 import com.oddlyspaced.nothing.beacon.lib.RootLedControllerImpl
-import com.oddlyspaced.nothing.beacon.lib.constant.Led
-import com.oddlyspaced.nothing.beacon.lib.constant.Section
+import com.oddlyspaced.nothing.beacon.lib.enum.Led
+import com.oddlyspaced.nothing.beacon.lib.enum.Section
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -26,7 +26,7 @@ class RingtoneAnimator(context: Context) {
             }
     }
 
-    private var isRinging = false
+    var isRinging = false
 
     fun play() {
         mediaPlayer.start()
