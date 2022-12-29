@@ -11,6 +11,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.oddlyspaced.nothing.beacon.lib.animation.RingtoneAnimator
+import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
 import com.oddlyspaced.nothing.beacon.util.Logger
 
 // foreground service that will manage state for LED ringtones and calls
@@ -51,7 +52,7 @@ class LedHandlerService: Service() {
         }
         Logger.d("Registering LED Receiver")
         registerReceiver(customReceiver, filter);
-        anim = RingtoneAnimator(this)
+        anim = RingtoneAnimator(this, NothingRingtone.ABRA)
     }
 
     override fun onDestroy() {
