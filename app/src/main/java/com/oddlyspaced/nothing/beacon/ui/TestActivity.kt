@@ -8,11 +8,13 @@ import com.oddlyspaced.nothing.beacon.databinding.ActivityTestBinding
 import com.oddlyspaced.nothing.beacon.lib.animation.RingtoneAnimator
 import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
 import com.oddlyspaced.nothing.beacon.service.LedHandlerService
+import com.oddlyspaced.nothing.beacon.util.SharedPreferenceManager
 
 class TestActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityTestBinding.inflate(layoutInflater) }
     private val ringtoneAnimations = NothingRingtone.values()
+    private val sharedPreferenceManager by lazy { SharedPreferenceManager(applicationContext) }
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (!isGranted) {
@@ -76,6 +78,10 @@ class TestActivity : AppCompatActivity() {
             }
             binding.txCurrentAnim.text = ringtoneAnimations[currentRingtone].name
             ringtoneAnimator = RingtoneAnimator(applicationContext, ringtoneAnimations[currentRingtone])
+        }
+
+        binding.btnSave.setOnClickListener {
+            sharedPreferenceManager.saveRingtone(ringtoneAnimations[currentRingtone])
         }
     }
 }

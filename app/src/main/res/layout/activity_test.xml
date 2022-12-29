@@ -95,4 +95,14 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_anim_next"
         app:layout_constraintStart_toEndOf="@+id/btn_anim_prev"
         app:layout_constraintTop_toTopOf="@+id/btn_anim_prev" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_ring_stop"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ring_stop"
+        app:layout_constraintStart_toEndOf="@+id/btn_ring_start"
+        app:layout_constraintTop_toTopOf="@+id/btn_ring_start" />
 </androidx.constraintlayout.widget.ConstraintLayout>
