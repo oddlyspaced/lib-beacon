@@ -1,10 +1,8 @@
 package com.oddlyspaced.nothing.beacon.lib
 
-import android.util.Log
 import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant.LED_DRIVER_PATH
 import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant.NODE_SINGLE_BRIGHTNESS
 import com.oddlyspaced.nothing.beacon.lib.enum.Led
-import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant.TAG
 import com.oddlyspaced.nothing.beacon.lib.enum.Section
 import com.oddlyspaced.nothing.beacon.lib.interfaces.LedController
 import com.topjohnwu.superuser.Shell
