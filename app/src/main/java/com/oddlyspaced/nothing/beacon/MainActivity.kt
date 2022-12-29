@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     init {
-        Shell.enableVerboseLogging = BuildConfig.DEBUG
+//        Shell.enableVerboseLogging = BuildConfig.DEBUG
         Shell.setDefaultBuilder(
             Shell.Builder.create().apply {
                 setFlags(Shell.FLAG_REDIRECT_STDERR)
