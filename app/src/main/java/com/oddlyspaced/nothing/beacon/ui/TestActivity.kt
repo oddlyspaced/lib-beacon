@@ -45,6 +45,10 @@ class TestActivity : AppCompatActivity() {
         }
 
         binding.btnStartService.setOnClickListener {
+            try {
+                LedHandlerService.stop(applicationContext)
+            }
+            catch (_: Exception) {}
             LedHandlerService.start(applicationContext)
         }
 
