@@ -16,6 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Beacon">
         <activity
+            android:name=".TestActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -28,6 +35,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <receiver
             android:name=".receiver.PhoneCallReceiverImpl"
             android:exported="true">
@@ -35,6 +43,7 @@
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
+
         <service android:name=".service.LedHandlerService" />
     </application>
 
