@@ -1,141 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/img_device_background"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="0.52"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/img_device_led_camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
-        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
-        app:layout_constraintStart_toStartOf="@+id/img_device_background"
-        app:layout_constraintTop_toTopOf="@+id/img_device_background"
-        app:srcCompat="@drawable/led_strip_camera" />
 
-    <ImageView
-        android:id="@+id/img_device_led_vline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
-        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
-        app:layout_constraintStart_toStartOf="@+id/img_device_background"
-        app:layout_constraintTop_toTopOf="@+id/img_device_background"
-        app:srcCompat="@drawable/led_strip_vline" />
+        <ImageView
+            android:id="@+id/img_device_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back" />
 
-    <ImageView
-        android:id="@+id/img_device_led_center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
-        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
-        app:layout_constraintStart_toStartOf="@+id/img_device_background"
-        app:layout_constraintTop_toTopOf="@+id/img_device_background"
-        app:srcCompat="@drawable/led_strip_center" />
 
-    <ImageView
-        android:id="@+id/img_device_led_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
-        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
-        app:layout_constraintStart_toStartOf="@+id/img_device_background"
-        app:layout_constraintTop_toTopOf="@+id/img_device_background"
-        app:srcCompat="@drawable/led_strip_bottom" />
+        <ImageView
+            android:id="@+id/img_device_background_overlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.25"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back"
+            app:tint="#000000" />
 
-    <ImageView
-        android:id="@+id/img_device_led_bottom_dot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
-        app:layout_constraintEnd_toEndOf="@+id/img_device_background"
-        app:layout_constraintStart_toStartOf="@+id/img_device_background"
-        app:layout_constraintTop_toTopOf="@+id/img_device_background"
-        app:srcCompat="@drawable/led_dot_bottom" />
+        <ImageView
+            android:id="@+id/img_device_led_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+            app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+            app:layout_constraintStart_toStartOf="@+id/img_device_background"
+            app:layout_constraintTop_toTopOf="@+id/img_device_background"
+            app:srcCompat="@drawable/led_strip_camera" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        <ImageView
+            android:id="@+id/img_device_led_vline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+            app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+            app:layout_constraintStart_toStartOf="@+id/img_device_background"
+            app:layout_constraintTop_toTopOf="@+id/img_device_background"
+            app:srcCompat="@drawable/led_strip_vline" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.93" />
+        <ImageView
+            android:id="@+id/img_device_led_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+            app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+            app:layout_constraintStart_toStartOf="@+id/img_device_background"
+            app:layout_constraintTop_toTopOf="@+id/img_device_background"
+            app:srcCompat="@drawable/led_strip_center" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24" />
+        <ImageView
+            android:id="@+id/img_device_led_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+            app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+            app:layout_constraintStart_toStartOf="@+id/img_device_background"
+            app:layout_constraintTop_toTopOf="@+id/img_device_background"
+            app:srcCompat="@drawable/led_strip_bottom" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.77" />
+        <ImageView
+            android:id="@+id/img_device_led_bottom_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img_device_background"
+            app:layout_constraintEnd_toEndOf="@+id/img_device_background"
+            app:layout_constraintStart_toStartOf="@+id/img_device_background"
+            app:layout_constraintTop_toTopOf="@+id/img_device_background"
+            app:srcCompat="@drawable/led_dot_bottom" />
 
-    <View
-        android:id="@+id/view_touch_led_camera"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/img_device_background"
-        app:layout_constraintTop_toTopOf="@+id/img_device_background" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <View
-        android:id="@+id/view_touch_led_vline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/img_device_background" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.93" />
 
-    <View
-        android:id="@+id/view_touch_led_center"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.24" />
 
-    <View
-        android:id="@+id/view_touch_led_bottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.77" />
 
-    <View
-        android:id="@+id/view_touch_led_bottom_dot"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        <View
+            android:id="@+id/view_touch_led_camera"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/img_device_background"
+            app:layout_constraintTop_toTopOf="@+id/img_device_background" />
+
+        <View
+            android:id="@+id/view_touch_led_vline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/img_device_background" />
+
+        <View
+            android:id="@+id/view_touch_led_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+        <View
+            android:id="@+id/view_touch_led_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <View
+            android:id="@+id/view_touch_led_bottom_dot"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
