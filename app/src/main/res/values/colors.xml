@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="background">@android:color/system_neutral1_900</color>
+    <color name="title">@android:color/system_neutral1_50</color>
+    <color name="text">@android:color/system_neutral2_200</color>
+    <color name="heading">@android:color/system_accent1_100</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
