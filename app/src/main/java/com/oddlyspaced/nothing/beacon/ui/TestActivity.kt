@@ -1,5 +1,6 @@
 package com.oddlyspaced.nothing.beacon.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -53,15 +54,12 @@ class TestActivity : AppCompatActivity() {
         }
 
         binding.btnRingStart.setOnClickListener {
-            if (!ringtoneAnimator.isRinging) {
-                ringtoneAnimator.play()
-            }
+            ringtoneAnimator = RingtoneAnimator(applicationContext, ringtoneAnimations[currentRingtone])
+            ringtoneAnimator.play()
         }
 
         binding.btnRingStop.setOnClickListener {
-            if (ringtoneAnimator.isRinging) {
-                ringtoneAnimator.stop()
-            }
+            ringtoneAnimator.stop()
         }
 
         binding.btnAnimNext.setOnClickListener {
