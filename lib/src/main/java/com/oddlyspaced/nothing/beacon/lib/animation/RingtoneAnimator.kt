@@ -2,42 +2,37 @@ package com.oddlyspaced.nothing.beacon.lib.animation
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.util.Log
 import com.oddlyspaced.nothing.beacon.lib.R
 import com.oddlyspaced.nothing.beacon.lib.RootLedControllerImpl
 import com.oddlyspaced.nothing.beacon.lib.enum.Led
 import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
 import com.oddlyspaced.nothing.beacon.lib.enum.Section
+import com.oddlyspaced.nothing.beacon.lib.ui.NothingLEDView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RingtoneAnimator(context: Context, anim: NothingRingtone) {
+class RingtoneAnimator(context: Context, anim: NothingRingtone, private val ledView: NothingLEDView? = null) {
 
     private val controller = RootLedControllerImpl()
     private val mediaPlayer = MediaPlayer.create(context, anim.media)
-    private val ledAnimationData = arrayListOf<Array<String>>()
-
-    init {
-        context.resources.openRawResource(anim.data).bufferedReader().readLines()
-            .forEach {
-                ledAnimationData.add(it.split(",").toTypedArray())
-            }
+    private val ledAnimationData = context.resources.openRawResource(anim.data).bufferedReader().readLines().map {
+        it.split(",").toTypedArray()
     }
 
-    var isRinging = false
-
     fun play() {
-        mediaPlayer.start()
-        mediaPlayer.isLooping = true
-        isRinging = true
-        animate()
+        mediaPlayer.setOnPreparedListener {
+            isPlaying = true
+            it.start()
+            animate()
+        }
     }
 
     private fun animate() {
         CoroutineScope(Dispatchers.IO).launch {
-            while (isRinging) {
-                if (mediaPlayer.currentPosition < mediaPlayer.duration) {
-                    val durLoc = mediaPlayer.currentPosition.toDouble() / mediaPlayer.duration
+            while (isPlaying && mediaPlayer.currentPosition < mediaPlayer.duration - 1) {
+                val durLoc = mediaPlayer.currentPosition.toDouble() / mediaPlayer.duration
                     val pos = (durLoc * ledAnimationData.size).toInt()
                     if (pos < ledAnimationData.size) {
                         val data = ledAnimationData[pos]
@@ -46,17 +41,24 @@ class RingtoneAnimator(context: Context, anim: NothingRingtone) {
                         controller.setSectionBrightness(Section.CENTER_RING, data[2].toInt())
                         controller.setSectionBrightness(Section.SLANT, data[3].toInt())
                         controller.setLedBrightness(Led.fromCode(16), data[4].toInt())
+
+                        ledView?.let {
+                            it.cameraBrightness = data[0].toInt()
+                            it.slantBrightness = data[1].toInt()
+                            it.centerBrightness = data[2].toInt()
+                            it.bottomStripBrightness = data[3].toInt()
+                            it.bottomDotBrightness = data[4].toInt()
+                        }
                     }
-                }
             }
         }
     }
 
+    private var isPlaying = false
+
     fun stop() {
-        isRinging = false
-        mediaPlayer.seekTo(0)
+        isPlaying = false
         mediaPlayer.stop()
-        mediaPlayer.prepareAsync()
     }
 
 }
