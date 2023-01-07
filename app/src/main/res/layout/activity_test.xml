@@ -105,4 +105,16 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_ring_stop"
         app:layout_constraintStart_toEndOf="@+id/btn_ring_start"
         app:layout_constraintTop_toTopOf="@+id/btn_ring_start" />
+
+    <com.oddlyspaced.nothing.beacon.lib.ui.NothingLEDView
+        android:id="@+id/led"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_anim_prev"
+        app:layout_constraintDimensionRatio="0.52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_service" />
 </androidx.constraintlayout.widget.ConstraintLayout>

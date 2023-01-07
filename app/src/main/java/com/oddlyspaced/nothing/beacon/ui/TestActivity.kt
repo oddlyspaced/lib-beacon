@@ -54,7 +54,7 @@ class TestActivity : AppCompatActivity() {
         }
 
         binding.btnRingStart.setOnClickListener {
-            ringtoneAnimator = RingtoneAnimator(applicationContext, ringtoneAnimations[currentRingtone])
+            ringtoneAnimator = RingtoneAnimator(applicationContext, ringtoneAnimations[currentRingtone], binding.led)
             ringtoneAnimator.play()
         }
 
