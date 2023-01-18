@@ -2,9 +2,7 @@ package com.oddlyspaced.nothing.beacon.lib.animation
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.util.Log
-import com.oddlyspaced.nothing.beacon.lib.R
-import com.oddlyspaced.nothing.beacon.lib.RootLedControllerImpl
+import com.oddlyspaced.nothing.beacon.lib.interfaces.RootLedControllerImpl
 import com.oddlyspaced.nothing.beacon.lib.enum.Led
 import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
 import com.oddlyspaced.nothing.beacon.lib.enum.Section

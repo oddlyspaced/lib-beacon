@@ -1,4 +1,4 @@
-package com.oddlyspaced.nothing.beacon.lib
+package com.oddlyspaced.nothing.beacon.lib.interfaces
 
 import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant.LED_DRIVER_PATH
 import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant.NODE_SINGLE_BRIGHTNESS
