@@ -10,8 +10,7 @@ import android.content.IntentFilter
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import com.oddlyspaced.nothing.beacon.lib.animation.RingtoneAnimator
-import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
+import com.oddlyspaced.nothing.beacon.lib.animation.ResourceAnimator
 import com.oddlyspaced.nothing.beacon.util.Logger
 import com.oddlyspaced.nothing.beacon.util.SharedPreferenceManager
 
@@ -33,7 +32,7 @@ class LedHandlerService: Service() {
         }
     }
 
-    private lateinit var anim: RingtoneAnimator
+    private lateinit var anim: ResourceAnimator
 
     private val customReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -53,7 +52,7 @@ class LedHandlerService: Service() {
         }
         Logger.d("Registering LED Receiver")
         registerReceiver(customReceiver, filter)
-        anim = RingtoneAnimator(this, SharedPreferenceManager(applicationContext).getRingtone())
+        anim = ResourceAnimator(this, SharedPreferenceManager(applicationContext).getRingtone())
     }
 
     override fun onDestroy() {

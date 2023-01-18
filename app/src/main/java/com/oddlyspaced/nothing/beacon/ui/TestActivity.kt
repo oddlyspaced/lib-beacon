@@ -1,12 +1,11 @@
 package com.oddlyspaced.nothing.beacon.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.oddlyspaced.nothing.beacon.databinding.ActivityTestBinding
-import com.oddlyspaced.nothing.beacon.lib.animation.RingtoneAnimator
+import com.oddlyspaced.nothing.beacon.lib.animation.ResourceAnimator
 import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
 import com.oddlyspaced.nothing.beacon.service.LedHandlerService
 import com.oddlyspaced.nothing.beacon.util.SharedPreferenceManager
@@ -23,14 +22,14 @@ class TestActivity : AppCompatActivity() {
         }
     }
 
-    private lateinit var ringtoneAnimator: RingtoneAnimator
+    private lateinit var ringtoneAnimator: ResourceAnimator
     private var currentRingtone = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        ringtoneAnimator = RingtoneAnimator(applicationContext, NothingRingtone.ABRA)
+        ringtoneAnimator = ResourceAnimator(applicationContext, NothingRingtone.ABRA)
         binding.txCurrentAnim.text = NothingRingtone.ABRA.name
 
         binding.btnPermCallLog.setOnClickListener {
@@ -54,7 +53,7 @@ class TestActivity : AppCompatActivity() {
         }
 
         binding.btnRingStart.setOnClickListener {
-            ringtoneAnimator = RingtoneAnimator(applicationContext, ringtoneAnimations[currentRingtone], binding.led)
+            ringtoneAnimator = ResourceAnimator(applicationContext, ringtoneAnimations[currentRingtone], binding.led)
             ringtoneAnimator.play()
         }
 
@@ -69,7 +68,7 @@ class TestActivity : AppCompatActivity() {
                 currentRingtone = 0
             }
             binding.txCurrentAnim.text = ringtoneAnimations[currentRingtone].name
-            ringtoneAnimator = RingtoneAnimator(applicationContext, ringtoneAnimations[currentRingtone])
+            ringtoneAnimator = ResourceAnimator(applicationContext, ringtoneAnimations[currentRingtone])
         }
 
         binding.btnAnimPrev.setOnClickListener {
@@ -79,7 +78,7 @@ class TestActivity : AppCompatActivity() {
                 currentRingtone = ringtoneAnimations.size - 1
             }
             binding.txCurrentAnim.text = ringtoneAnimations[currentRingtone].name
-            ringtoneAnimator = RingtoneAnimator(applicationContext, ringtoneAnimations[currentRingtone])
+            ringtoneAnimator = ResourceAnimator(applicationContext, ringtoneAnimations[currentRingtone])
         }
 
         binding.btnSave.setOnClickListener {
