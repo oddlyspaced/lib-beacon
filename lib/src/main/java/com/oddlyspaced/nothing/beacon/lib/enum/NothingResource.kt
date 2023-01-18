@@ -2,6 +2,9 @@ package com.oddlyspaced.nothing.beacon.lib.enum
 
 import com.oddlyspaced.nothing.beacon.lib.R
 
+/***
+ * Enum to map resource to animation file along with a string name
+ */
 enum class NothingResource(val media: Int, val data: Int, name: String) {
     ABRA(R.raw.ringtone_abra, R.raw.data_abra, "abra"),
     BEETLE(R.raw.ringtone_beetle, R.raw.data_beetle, "beetle"),

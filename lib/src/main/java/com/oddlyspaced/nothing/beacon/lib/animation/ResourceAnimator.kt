@@ -11,6 +11,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/***
+ * Plays and animates the led in sync with a provided resource representation
+ * @param context Context
+ * @param anim A representation of the resource that needs to be played back
+ * @param ledView Optional reference to an LedView to animate with sync with Leds
+ */
 class ResourceAnimator(context: Context, anim: NothingResource, private val ledView: NothingLEDView? = null) {
 
     private val controller = RootLedControllerImpl()

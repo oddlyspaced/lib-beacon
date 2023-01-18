@@ -1,5 +1,8 @@
 package com.oddlyspaced.nothing.beacon.lib.enum
 
+/***
+ * Enums to store the Led numeric representation
+ */
 enum class Led(val code: Int) {
     // Slant Strip
     LED_SLANT_STRIP(1),

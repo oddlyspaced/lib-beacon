@@ -1,5 +1,8 @@
 package com.oddlyspaced.nothing.beacon.lib.enum
 
+/***
+ * File name based sections on the device
+ */
 enum class Section(val section: String) {
     // All LEDs
     ALL_WHITE_LEDS("all_white_leds_br"),

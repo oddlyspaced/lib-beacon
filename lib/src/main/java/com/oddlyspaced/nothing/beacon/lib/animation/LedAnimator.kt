@@ -10,6 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/***
+ * Misc animations for the LED
+ * @param controller Controller implementation (typically RootLedControllerImpl)
+ */
 class LedAnimator(private val controller: LedController) {
     fun testPattern() {
         ValueAnimator.ofInt(LedConstant.BRIGHTNESS_MIN, LedConstant.BRIGHTNESS_MAX).apply {
