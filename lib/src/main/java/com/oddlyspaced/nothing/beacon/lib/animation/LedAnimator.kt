@@ -1,8 +1,6 @@
-package com.oddlyspaced.nothing.beacon.lib
+package com.oddlyspaced.nothing.beacon.lib.animation
 
 import android.animation.ValueAnimator
-import android.content.Context
-import android.media.MediaPlayer
 import com.oddlyspaced.nothing.beacon.lib.enum.Led
 import com.oddlyspaced.nothing.beacon.lib.enum.LedConstant
 import com.oddlyspaced.nothing.beacon.lib.enum.Section
