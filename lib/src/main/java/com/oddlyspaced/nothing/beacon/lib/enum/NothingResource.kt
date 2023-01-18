@@ -2,7 +2,7 @@ package com.oddlyspaced.nothing.beacon.lib.enum
 
 import com.oddlyspaced.nothing.beacon.lib.R
 
-enum class NothingRingtone(val media: Int, val data: Int, name: String) {
+enum class NothingResource(val media: Int, val data: Int, name: String) {
     ABRA(R.raw.ringtone_abra, R.raw.data_abra, "abra"),
     BEETLE(R.raw.ringtone_beetle, R.raw.data_beetle, "beetle"),
     CODED(R.raw.ringtone_coded, R.raw.data_coded, "coded"),

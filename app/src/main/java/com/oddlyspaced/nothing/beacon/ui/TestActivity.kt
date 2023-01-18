@@ -6,14 +6,14 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.oddlyspaced.nothing.beacon.databinding.ActivityTestBinding
 import com.oddlyspaced.nothing.beacon.lib.animation.ResourceAnimator
-import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
+import com.oddlyspaced.nothing.beacon.lib.enum.NothingResource
 import com.oddlyspaced.nothing.beacon.service.LedHandlerService
 import com.oddlyspaced.nothing.beacon.util.SharedPreferenceManager
 
 class TestActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityTestBinding.inflate(layoutInflater) }
-    private val ringtoneAnimations = NothingRingtone.values()
+    private val ringtoneAnimations = NothingResource.values()
     private val sharedPreferenceManager by lazy { SharedPreferenceManager(applicationContext) }
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -29,8 +29,8 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        ringtoneAnimator = ResourceAnimator(applicationContext, NothingRingtone.ABRA)
-        binding.txCurrentAnim.text = NothingRingtone.ABRA.name
+        ringtoneAnimator = ResourceAnimator(applicationContext, NothingResource.ABRA)
+        binding.txCurrentAnim.text = NothingResource.ABRA.name
 
         binding.btnPermCallLog.setOnClickListener {
             requestPermissionLauncher.launch(android.Manifest.permission.READ_CALL_LOG)

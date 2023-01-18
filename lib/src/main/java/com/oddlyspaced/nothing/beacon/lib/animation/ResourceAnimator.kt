@@ -4,14 +4,14 @@ import android.content.Context
 import android.media.MediaPlayer
 import com.oddlyspaced.nothing.beacon.lib.interfaces.RootLedControllerImpl
 import com.oddlyspaced.nothing.beacon.lib.enum.Led
-import com.oddlyspaced.nothing.beacon.lib.enum.NothingRingtone
+import com.oddlyspaced.nothing.beacon.lib.enum.NothingResource
 import com.oddlyspaced.nothing.beacon.lib.enum.Section
 import com.oddlyspaced.nothing.beacon.lib.ui.NothingLEDView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ResourceAnimator(context: Context, anim: NothingRingtone, private val ledView: NothingLEDView? = null) {
+class ResourceAnimator(context: Context, anim: NothingResource, private val ledView: NothingLEDView? = null) {
 
     private val controller = RootLedControllerImpl()
     private val mediaPlayer = MediaPlayer.create(context, anim.media)
