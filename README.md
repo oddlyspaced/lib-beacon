@@ -2,7 +2,7 @@
 Root based SDK for controlling the LED's on the back of Nothing Phone 1.
 
 ## Dependencies
-- Root (Magisk)
+- libsu [Magisk]
 
 ## Adding to your project
 1. Clone this repository
